@@ -25,9 +25,23 @@ class UserController extends BaseController
     function createUser(Request $request)
     {
         $data = $request->all();
-
         $this->userRepository->createUser($data);
 
         return $this->sendSuccessResponse("create successly", null);
+    }
+
+    function updateUser($idUser, Request $request)
+    {
+        $user = $this->getUserById($idUser);
+        $user->update($request->all());
+
+        return $this->sendSuccessResponse("update user successly", null);
+    }
+
+    function deleteUser($idUser)
+    {
+        $this->userRepository->deleteUser($idUser);
+
+        return $this->sendSuccessResponse("delete user successly", null);
     }
 }

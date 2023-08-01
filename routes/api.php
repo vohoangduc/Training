@@ -19,5 +19,7 @@ Route::prefix('v1')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('list-user', [UserController::class, 'listUser']);
         Route::post('create-user', [UserController::class, 'createUser']);
+        Route::get('delete/{id}', [UserController::class, 'deleteUser']);
+        Route::delete('delete/{id}', [UserController::class, 'deleteUser']);
     });
 });

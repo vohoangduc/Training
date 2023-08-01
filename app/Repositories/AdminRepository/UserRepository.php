@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class UserRepository implements UserInterface
 {
 
-     /**
+    /**
      * Get all users 
      * 
      * @return mixed
@@ -19,7 +19,7 @@ class UserRepository implements UserInterface
         return User::orderBy('id', 'desc')->get();
     }
 
-       /**
+    /**
      * Create user 
      *
      * @param array $attributes
@@ -30,4 +30,25 @@ class UserRepository implements UserInterface
         return User::create($attributes);
     }
 
+        /**
+     * Get user by id 
+     *
+     * @param int
+     * @return mixed
+     */
+    public function getUserById($idUser)
+    {
+        return User::findOrFail($idUser);
+    }
+
+    /**
+     * Create user 
+     *
+     * @param int $idUser
+     * @return mixed
+     */
+    public function deleteUser($idUser)
+    {
+        return User::destroy($idUser);
+    }
 }
